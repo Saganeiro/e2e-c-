@@ -1,10 +1,11 @@
 ## Selenium Test Framework  
+Test framework in C#, SpecFlow and xUnit. 
 
 ## Stack:
 * .net core 3.1
 * xUnit
-* page object pattern 
-* parallel executio
+* Page object pattern 
+* Parallel executio
 * SpecFlow
 * Allure Reports
-* integration with selenium grid
+* Integration with selenium grid
