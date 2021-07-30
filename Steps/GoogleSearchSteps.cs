@@ -20,6 +20,7 @@ namespace SpecFlowSimpleProject.Steps
         public void GivenIHaveEnteredTheGoogleHomePage()
         {
             this._googleMainPageObject.OpenGoogle();
+            this._googleMainPageObject.ClickGoogleAgreeButton();
         }
         
         [Given(@"I have entered (.*) into google search bar")]
@@ -31,7 +32,7 @@ namespace SpecFlowSimpleProject.Steps
         [When(@"I press search button")]
         public void WhenIPressSearchButton()
         {
-            this._googleMainPageObject.ClickSearchButton();
+            this._googleMainPageObject.ClickSearch();
         }
 
         [Then(@"In the link list there is link (.*)")]

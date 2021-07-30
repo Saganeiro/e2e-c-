@@ -5,6 +5,8 @@
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
 
+    using WebDriverManager.DriverConfigs.Impl;
+
     public class BrowserDriver : IDisposable
     {
         private readonly Lazy<IWebDriver> _currentWebDriverLazy;
@@ -28,9 +30,10 @@
 
         private IWebDriver CreateWebDriver()
         {
+            new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
-            var chromeOptions = new ChromeOptions();
-            var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions);
+            var chromeDriver = new ChromeDriver(chromeDriverService, WebDriverSettings.ChromeOptions());
+            chromeDriver.Manage().Window.Maximize();
 
             return chromeDriver;
         }

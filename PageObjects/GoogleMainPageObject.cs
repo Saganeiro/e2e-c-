@@ -9,6 +9,7 @@ namespace SpecFlowSimpleProject.PageObjects
     using FluentAssertions;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Interactions;
     using OpenQA.Selenium.Support.UI;
 
     public class GoogleMainPageObject
@@ -24,7 +25,9 @@ namespace SpecFlowSimpleProject.PageObjects
 
         private IWebElement SearchField => _webDriver.FindElement(By.Name("q"));
 
-        private IWebElement SeachButton => _webDriver.FindElement(By.Name("btnK"));
+        private IWebElement SearchButton => _webDriver.FindElement(By.Name("btnK"));
+
+        private IWebElement GoogleAgreeButton => _webDriver.FindElement(By.Id("L2AGLb"));
 
         private IList<IWebElement> SearchedLink => _webDriver.FindElements(By.XPath("//div[@class='g']//a[not(@class)]"));
 
@@ -33,15 +36,24 @@ namespace SpecFlowSimpleProject.PageObjects
             this._webDriver.Url = GoogleUrl;
         }
 
+        public void ClickGoogleAgreeButton()
+        {
+            GoogleAgreeButton.Click();
+        }
+
         public void EnterSearchedWord(string searchedWord)
         {
             SearchField.Clear();
             SearchField.SendKeys(searchedWord);
         }
 
-        public void ClickSearchButton()
+        public void ClickSearch()
         {
-            SeachButton.Click();
+            Actions action = new Actions(_webDriver);
+            action.SendKeys(Keys.Enter);
+            action.Perform();
+            action.Build();
+
         }
 
         public void CheckThatSearchedWordLinkIsPresent(string linkText)
