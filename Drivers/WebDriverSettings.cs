@@ -12,7 +12,7 @@ namespace SpecFlowSimpleProject.Drivers
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.IE;
 
-    public class WebDriverSettings
+    public static class WebDriverSettings
     {
 
         public static ChromeOptions ChromeOptions()

@@ -25,8 +25,6 @@ namespace SpecFlowSimpleProject.PageObjects
 
         private IWebElement SearchField => _webDriver.FindElement(By.Name("q"));
 
-        private IWebElement SearchButton => _webDriver.FindElement(By.Name("btnK"));
-
         private IWebElement GoogleAgreeButton => _webDriver.FindElement(By.Id("L2AGLb"));
 
         private IList<IWebElement> SearchedLink => _webDriver.FindElements(By.XPath("//div[@class='g']//a[not(@class)]"));
